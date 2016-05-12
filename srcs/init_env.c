@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:46:18 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/10 13:09:46 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/11 17:18:40 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_env	*new_env(void)
 	env->mlx = NULL;
 	env->win = NULL;
 	env->img = NULL;
+	env->param = NULL;
+
 	return (env);
 }
 

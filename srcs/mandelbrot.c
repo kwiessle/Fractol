@@ -6,11 +6,12 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 13:49:15 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/10 14:57:08 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/11 17:44:35 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdio.h>
 
 void		mandelbrot(t_env *env)
 {
@@ -24,14 +25,15 @@ void		mandelbrot(t_env *env)
 	long double		tmp;
 	int				color;
 
+//	color = 0xFF00FF;
 	x = 0;
 	while (x < X_WIN)
 	{
 		y = 0;
 		while (y < Y_WIN)
 		{
-			c_r = (x - X_WIN / 2) / (ZOOM + X1);
-			c_i = (y - Y_WIN / 2) / (ZOOM + Y1);
+			c_r = x / env->param->zoom + env->param->x1;
+			c_i = y / env->param->zoom + env->param->y1;
 			z_r = 0;
 			z_i = 0;
 			i = 0;
@@ -46,7 +48,7 @@ void		mandelbrot(t_env *env)
 				mlx_put_pixel_to_image(env, x, y, 0);
 			else
 			{
-				color = i * env->param->color;
+				color = i * env->param->color / env->param->iter;
 				mlx_put_pixel_to_image(env, x, y, color);
 			}
 			y++;
@@ -55,5 +57,3 @@ void		mandelbrot(t_env *env)
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img->img, 0, 0);
 }
-
-Zdp

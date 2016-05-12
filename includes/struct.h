@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:43:16 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/10 14:31:24 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/11 17:01:09 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 typedef struct		s_param
 {
-	int				zoom;
+	double				zoom;
 	int				iter;
 	int				xo;
 	int				yo;
 	int				color;
+	double				x1;
+	double				y1;
 }					t_param;
 
 typedef struct		s_coord

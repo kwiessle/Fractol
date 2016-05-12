@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:30:57 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/10 13:18:52 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/11 16:37:27 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		init_fractals(char *av, t_env *env);
 
 int		keyboard(int keycode, t_env *env);
 void	iterations(int keycode, t_env *env);
+int		zoom(int mouse, int x, int y, t_env *env);
 
 
 #endif
