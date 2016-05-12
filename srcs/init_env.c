@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:46:18 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/11 17:18:40 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/12 17:09:05 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,22 @@ t_env	*new_env(void)
 	env->win = NULL;
 	env->img = NULL;
 	env->param = NULL;
+	env->f = NULL;
 
 	return (env);
 }
 
-t_env	*init_env(void)
+t_env	*init_env(char *name)
 {
 	t_env	*env;
 
 	if (!(env = new_env()))
 		return (NULL);
 	env->mlx = mlx_init();
-	env->win = mlx_new_window(env->mlx, X_WIN, Y_WIN, "Fractol");
+	env->param = init_param(name);
+	env->win = mlx_new_window(env->mlx, X_WIN, Y_WIN, env->param->name);
 	env->img = init_img(env);
-	env->param = init_param();
+	env->f = init_frac(name);
 	return (env);
 }
 
@@ -59,4 +61,17 @@ void	mlx_put_pixel_to_image(t_env *env, int x, int y, int color)
 	if (x > 0 && x < X_WIN && y > 0 && y < Y_WIN)
 		ft_memcpy(&env->img->data[octet * (x + env->img->size_line / \
 					octet * y)], &color, octet);
+}
+
+void	put_pixel_to_fractal(t_env *env, int color)
+{
+	if (env->f->i == env->param->iter)
+		mlx_put_pixel_to_image(env, env->f->x, env->f->y, 0);
+	else
+	{
+		color = env->f->i * env->param->color / env->param->iter;
+		if (color > 0xFFFFFF)
+			color = env->param->color;
+		mlx_put_pixel_to_image(env, env->f->x, env->f->y, color);
+	}
 }

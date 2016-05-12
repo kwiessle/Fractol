@@ -6,39 +6,35 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 14:48:38 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/09 15:49:00 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/12 14:52:05 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.c"
+#include "fractol.h"
 
 void		julia(t_env *env)
 {
-	long double		z_r;
-	long double		z_i;
-	long double		tmp;
-	int				i;
-	int				x;
-	int				y;
-	int				color;
-
-	x = 0;
-	while (x < X_WIN)
+	env->f->x = 0;
+	while (env->f->x < X_WIN)
 	{
-		y = 0;
-		while (y < Y_WIN)
+		env->f->y = 0;
+		while (env->f->y < Y_WIN)
 		{
-			z_r = (x - X_WIN / 2) / (ZOOM + X2)
-			z_i = (y - Y_WIN / 2) / (ZOOM + Y2)
-			i = -1;
-			while ((z_r * z_r + z_i * z_i) < 4 && i++ < 50)
+			env->f->z_r = env->f->x / env->param->zoom + env->param->x1;
+			env->f->z_i = env->f->y / env->param->zoom + env->param->y1;
+			env->f->i = 0;
+			while ((pow(env->f->z_r, 2) + pow(env->f->z_i, 2)) < 4 && env->f->i < env->param->iter)
 			{
-				tmp = z_r;
-				z_r = z_r * z_r - z_i * z_i + 0.285;
-				z_i = 2 * z_i * tmp + 0.01;
+				env->f->tmp = env->f->z_r;
+				env->f->z_r = pow(env->f->z_r, 2) - pow(env->f->z_i, 2) + env->f->c_r;
+				env->f->z_i = 2 * env->f->z_i * env->f->tmp + env->f->c_i;
+				env->f->i++;
 			}
-			if (i == 50)
-				mlx_put_pixel_to_image(env, x, y,);
+			put_pixel_to_fractal(env, 0);
+			env->f->y++;
 		}
+		env->f->x++;
 	}
+//	env->f->x = 0;
+	mlx_put_image_to_window(env->mlx, env->win, env->img->img, 0, 0);
 }

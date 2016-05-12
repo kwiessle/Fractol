@@ -18,7 +18,8 @@ SRCS= srcs/main.c \
 	  srcs/init_fractals.c \
 	  srcs/key_functions.c \
 	  srcs/init_param.c \
-	  srcs/key_hook.c
+	  srcs/key_hook.c \
+	  srcs/julia.c
 
 OBJS= $(SRCS:.c=.o)
 INCLUDES= -I libft/includes -I includes -I mlx/

@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 12:32:07 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/10 15:16:01 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/12 17:16:51 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int		keyboard(int keycode, t_env *env)
 		exit(EXIT_SUCCESS);
 	if (keycode == ITER_MORE || keycode == ITER_LESS)
 		iterations(keycode, env);
-/*	if (keycode == COLOR_MORE || keycode == COLOR_LESS)
-		colors(keycode, env);*/
+	if (keycode == RIGHT || keycode == LEFT)
+		moove(keycode, env);
+	if (keycode == UP || keycode == DOWN)
+		moove(keycode, env);
+	if (keycode == ORIGIN)
+		origin(env);
 	return (0);
 }
