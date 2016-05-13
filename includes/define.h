@@ -6,15 +6,15 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:48:59 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/12 17:13:19 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/12 19:11:07 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
 
-# define X_WIN 600
-# define Y_WIN 600
+# define X_WIN 800
+# define Y_WIN 800
 # define ZOOM 200
 # define X1 -2.1
 # define Y1 -1.2

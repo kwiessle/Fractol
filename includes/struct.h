@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:43:16 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/12 16:51:54 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/12 20:19:28 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct		s_param
 	int				color;
 	double			x1;
 	double			y1;
+	double			zoom_rate;
 }					t_param;
 
 typedef struct		s_frac

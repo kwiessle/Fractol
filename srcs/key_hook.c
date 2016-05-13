@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 12:36:15 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/12 17:19:43 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/12 20:28:57 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,18 @@ int		zoom(int mouse, int x, int y, t_env *env)
 
 void	moove(int keycode, t_env *env)
 {
+	if (env->param->zoom >= 300)
+		env->param->zoom_rate = 0.01;
+	if (env->param->zoom >= 360)
+		env->param->zoom_rate = 0.001;
 	if (keycode == RIGHT)
-		env->param->x1 -= 0.01;
+		env->param->x1 -= env->param->zoom_rate;
 	if (keycode == LEFT)
-		env->param->x1 += 0.01;
+		env->param->x1 += env->param->zoom_rate;
 	if (keycode == UP)
-		env->param->y1 -= 0.01;
+		env->param->y1 -= env->param->zoom_rate;;
 	if (keycode == DOWN)
-		env->param->y1 += 0.01;
+		env->param->y1 += env->param->zoom_rate;;
 	mlx_clear_window(env->mlx, env->win);
 	init_fractals(env->param->name, env);
 }

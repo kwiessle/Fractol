@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 13:00:17 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/12 17:07:16 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/12 20:28:08 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ t_param		*init_param(char *name)
 	if (!(param = (t_param *)malloc(sizeof(t_param))))
 		return (NULL);
 	param->name = name;
-	param->zoom = 150;
-	param->iter = 30;
-	param->color = 0xef0b0b;
+	if (ft_strcmp(name, "mandelbrot") == 0)
+		param->zoom = 300;
+	else
+		param->zoom = 200;
+	param->iter = 36;
+	param->color = 0xfefefe;
 	if (ft_strcmp(name, "mandelbrot") == 0)
 	{
 		param->x1 = -2.1;
@@ -32,5 +35,6 @@ t_param		*init_param(char *name)
 		param->x1 = -2.0;
 		param->y1 = -2.0;
 	}
+	param->zoom_rate = 0.1;
 	return (param);
 }
