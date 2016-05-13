@@ -32,16 +32,10 @@ typedef struct		s_frac
 	long double		z_i;
 	long double		tmp;
 	int				i;
-int				x;
-	int				y;
-}					t_frac;
-
-typedef struct		s_coord
-{
 	int				x;
 	int				y;
-	struct s_coord	*next;
-}					t_coord;
+	int				motion;
+}					t_frac;
 
 typedef struct		s_img
 {

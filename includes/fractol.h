@@ -42,6 +42,7 @@ void	iterations(int keycode, t_env *env);
 int		zoom(int mouse, int x, int y, t_env *env);
 void	moove(int keycode, t_env *env);
 void	origin(t_env *env);
+int		motion(int x, int y, t_env *env);
 
 
 #endif

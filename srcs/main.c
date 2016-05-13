@@ -23,12 +23,14 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	env = init_env(av[1]);
-
+	env->f->motion = 0;
 	if(!(init_fractals(env->param->name, env)))
 		exit(EXIT_SUCCESS);
 	mlx_mouse_hook(env->win, zoom, env);
 //	mlx_mouse_hook(env->win, zoom, env);
+	mlx_hook(env->win, 6, 1L << 6, motion, env);
 	mlx_hook(env->win, 2, 3, keyboard, env);
+//	mlx_hook(env->win, 6, 1L << 6, motion, env);i
 //	mlx_mouse_hook(env->win, zoom, env);
 	mlx_loop(env->mlx);
 	return (0);

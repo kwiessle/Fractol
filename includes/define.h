@@ -13,7 +13,7 @@
 #ifndef DEFINE_H
 # define DEFINE_H
 
-# define X_WIN 800
+# define X_WIN 1000
 # define Y_WIN 800
 # define ZOOM 200
 # define X1 -2.1
@@ -26,5 +26,6 @@
 # define UP 125
 # define DOWN 126
 # define ORIGIN 49
+# define MOTION 15
 
 #endif

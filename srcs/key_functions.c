@@ -26,5 +26,6 @@ int		keyboard(int keycode, t_env *env)
 		moove(keycode, env);
 	if (keycode == ORIGIN)
 		origin(env);
+	(keycode = MOTION) ? env->f->motion++ : 0;
 	return (0);
 }
