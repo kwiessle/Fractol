@@ -6,12 +6,11 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/14 18:53:51 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/03/23 17:55:35 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/17 17:26:49 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_strdup(const char *s1)
 {

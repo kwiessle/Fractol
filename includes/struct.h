@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:43:16 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/17 13:16:21 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/17 17:24:03 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ typedef struct		s_env
 	t_param			*param;
 	t_frac			*f;
 }					t_env;
-
 
 #endif
