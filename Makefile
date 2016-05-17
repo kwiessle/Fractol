@@ -21,7 +21,6 @@ SRCS= srcs/main.c \
 	  srcs/key_hook.c \
 	  srcs/julia.c \
 	  srcs/menu.c \
-	  srcs/current.c
 
 OBJS= $(SRCS:.c=.o)
 INCLUDES= -I libft/includes -I includes -I mlx/

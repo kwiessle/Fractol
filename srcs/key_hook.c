@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 12:36:15 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/12 20:28:57 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/17 16:53:11 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 void	iterations(int keycode, t_env *env)
 {
-
 	if (keycode == ITER_MORE)
 		env->param->iter += 1;
 	if (keycode == ITER_LESS)
 		env->param->iter -= 1;
-	mlx_destroy_image(env->mlx, env->img->img);
-	env->img = init_img(env);
-	init_fractals(env->param->name, env);
 }
 
 int		zoom(int mouse, int x, int y, t_env *env)
@@ -38,19 +34,16 @@ int		zoom(int mouse, int x, int y, t_env *env)
 			env->param->zoom *= 1.1;
 			env->param->x1 = x_comp - (x / env->param->zoom);
 			env->param->y1 = y_comp - (y / env->param->zoom);
-			mlx_destroy_image(env->mlx, env->img->img);
-			env->img = init_img(env);
-			init_fractals(env->param->name, env);
 		}
 		if (mouse == 5)
 		{
 			env->param->zoom /= 1.1;
 			env->param->x1 = x_comp - (x / env->param->zoom);
 			env->param->y1 = y_comp - (y / env->param->zoom);
-			mlx_destroy_image(env->mlx, env->img->img);
-			env->img = init_img(env);
-			init_fractals(env->param->name, env);
 		}
+		mlx_clear_window(env->mlx, env->win);
+		init_fractals(env->param->name, env);
+		menu(env);
 	}
 	return (0);
 }
@@ -69,18 +62,12 @@ void	moove(int keycode, t_env *env)
 		env->param->y1 -= env->param->zoom_rate;
 	if (keycode == DOWN)
 		env->param->y1 += env->param->zoom_rate;
-	mlx_destroy_image(env->mlx, env->img->img);
-	env->img = init_img(env);
-	init_fractals(env->param->name, env);
 }
 
 void	origin(t_env *env)
 {
-			env->param = init_param(env->param->name);
-			env->f = init_frac(env->param->name);
-			mlx_destroy_image(env->mlx, env->img->img);
-			env->img = init_img(env);
-			init_fractals(env->param->name, env);
+	env->param = init_param(env->param->name);
+	env->f = init_frac(env->param->name);
 }
 
 int		motion(int x, int y, t_env *env)
@@ -98,37 +85,9 @@ int		motion(int x, int y, t_env *env)
 			if (x < X_WIN / 2 && y > Y_WIN)
 				env->f->c_r -= 0.01;
 		}
-		mlx_destroy_image(env->mlx, env->img->img);
-		env->img = init_img(env);
-		init_fractals(env->param->name, env);
-//		motion_checker(env);
-//		mlx_string_put(env->mlx, env->win, 20, 15, 0x00FF00, "Motion ON");
-	}
-/*	else
-	{
 		mlx_clear_window(env->mlx, env->win);
 		init_fractals(env->param->name, env);
 		menu(env);
-		mlx_string_put(env->mlx, env->win, 20, 15, 0xFF0000, "Motion OFF");
-	}*/
+	}
 	return (0);
 }
-
-/*int			showmenu(t_env *env)
-{
-	if (env->f->menu % 2 == 1)
-	{
-	//	mlx_destroy_window(env->mlx, env->win);
-		env->win = mlx_new_window(env->mlx, 1000, Y_WIN, env->param->name);
-		init_fractals(env->param->name, env);
-		env->f->menu = 0;
-		menu(env);
-	}
-	else
-	{
-		mlx_destroy_window(env->mlx, env->win);
-		env->win = mlx_new_window(env->mlx, 800, Y_WIN, env->param->name);
-		init_fractals(env->param->name, env);
-	}
-	return (0);
-}*/

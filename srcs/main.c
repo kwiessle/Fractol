@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:41:50 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/12 18:25:00 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/17 16:46:39 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int		main(int ac, char **av)
 	}
 	env = init_env(av[1]);
 	menu(env);
-	if(!(init_fractals(env->param->name, env)))
+	if (!(init_fractals(env->param->name, env)))
 		exit(EXIT_SUCCESS);
-	mlx_hook(env->win, 2, 3, motion_checker, env);
 	mlx_mouse_hook(env->win, zoom, env);
 	mlx_hook(env->win, 6, 1L << 6, motion, env);
 	mlx_hook(env->win, 2, 3, keyboard, env);
