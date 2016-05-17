@@ -20,15 +20,16 @@ t_frac		*init_frac(char *name)
 		return (NULL);
 	if (ft_strcmp(name, "julia") == 0)
 	{
-		fractal->c_r = -0.64;
-		fractal->c_i = -0.55;
+		fractal->c_r = -0.74;
+		fractal->c_i = 0.14;
 	}
 	else
 	{
 		fractal->c_r = 0;
 		fractal->c_i = 0;
 	}
-	fractal->motion = 1;
+	fractal->motion = 0;
+	fractal->menu = 0;
 	fractal->z_r = 0;
 	fractal->z_i = 0;
 	fractal->tmp = 0;

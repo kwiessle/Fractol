@@ -26,6 +26,11 @@ int		keyboard(int keycode, t_env *env)
 		moove(keycode, env);
 	if (keycode == ORIGIN)
 		origin(env);
-	(keycode = MOTION) ? env->f->motion++ : 0;
+	if (keycode == MOTION)
+	{
+		(keycode = MOTION) ? env->f->motion++ : 0;
+		if (ft_strcmp(env->param->name, "mandelbrot") != 0)
+			motion_checker(env);
+	}
 	return (0);
 }

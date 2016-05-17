@@ -25,7 +25,8 @@
 # define LEFT 123
 # define UP 125
 # define DOWN 126
-# define ORIGIN 49
-# define MOTION 15
+# define ORIGIN 15
+# define MOTION 49
+# define MENU 38
 
 #endif

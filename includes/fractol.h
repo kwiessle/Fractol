@@ -43,6 +43,13 @@ int		zoom(int mouse, int x, int y, t_env *env);
 void	moove(int keycode, t_env *env);
 void	origin(t_env *env);
 int		motion(int x, int y, t_env *env);
+int		showmenu(t_env *env);
 
+/* MENU */
+
+int		menu(t_env *env);
+void	title(t_env *env);
+int		motion_checker(t_env *env);
+void	commands(t_env *env);
 
 #endif

@@ -65,13 +65,12 @@ void	mlx_put_pixel_to_image(t_env *env, int x, int y, int color)
 
 void	put_pixel_to_fractal(t_env *env, int color)
 {
+
 	if (env->f->i == env->param->iter)
 		mlx_put_pixel_to_image(env, env->f->x, env->f->y, 0);
 	else
 	{
 		color = env->f->i * env->param->color / env->param->iter;
-		if (color > 0xFFFFFF)
-			color = env->param->color;
 		mlx_put_pixel_to_image(env, env->f->x, env->f->y, color);
 	}
 }

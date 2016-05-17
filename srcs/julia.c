@@ -30,7 +30,7 @@ void		julia(t_env *env)
 				env->f->z_i = 2 * env->f->z_i * env->f->tmp + env->f->c_i;
 				env->f->i++;
 			}
-			put_pixel_to_fractal(env, 0);
+			put_pixel_to_fractal(env, 0xf4d533);
 			env->f->y++;
 		}
 		env->f->x++;

@@ -35,6 +35,7 @@ typedef struct		s_frac
 	int				x;
 	int				y;
 	int				motion;
+	int				menu;
 }					t_frac;
 
 typedef struct		s_img
