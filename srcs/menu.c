@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 16:50:19 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/18 15:45:14 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/18 16:37:21 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ int		menu(t_env *env)
 
 	x = 800;
 	y = 0;
-	while (x <= X_WIN)
+	while (x <= X_WIN + 200)
 	{
-		while (y <= Y_WIN)
+		while (y <= Y_WIN + 200)
 		{
-			if (x <= 800)
-				mlx_pixel_put(env->mlx, env->win, x, y, 0x98f5ff);
-			else
-				mlx_pixel_put(env->mlx, env->win, x, y, 0xaaaaaa);
+			if (x == 800 || x == 999)
+				mlx_pixel_put(env->mlx, env->win, x, y, M);
+			if (x % 10 == 0 && y > 400)
+				mlx_pixel_put(env->mlx, env->win, x, y, M);
+			if ((y == 0 || y == 230) || (y == 400 || y == 799))
+				mlx_pixel_put(env->mlx, env->win, x + 1, y, M);
 			y++;
 		}
 		y = 0;
@@ -50,11 +52,12 @@ void	title(t_env *env)
 		i++;
 	}
 	title[i] = '\0';
-	if (ft_strcmp(title, "JULIA") == 0)
+	if (ft_strcmp(title, "JULIA") == 0 || ft_strcmp(title, "SWORD") == 0)
 		mlx_string_put(env->mlx, env->win, 875, 20, W, title);
 	else
 		mlx_string_put(env->mlx, env->win, 850, 20, W, title);
 	mlx_string_put(env->mlx, env->win, 810, 250, W, "CURRENT PARAMETERS");
+	mlx_string_put(env->mlx, env->win, 815, 190, B, "Motion  :   spc");
 }
 
 void	commands(t_env *e)
@@ -67,7 +70,9 @@ void	commands(t_env *e)
 	mlx_string_put(e->mlx, e->win, 815, 130, B, "Reset   :    r");
 	mlx_string_put(e->mlx, e->win, 815, 150, B, "Zoom    :  Scroll");
 	mlx_string_put(e->mlx, e->win, 815, 170, B, "Exit    :   Esc");
-	if (ft_strcmp(e->param->name, "mandelbrot") != 0 && ft_strcmp(e->param->name, "burningship") != 0 && ft_strcmp(e->param->name, "tricorn") != 0)
+	if (ft_strcmp(e->param->name, "mandelbrot") != 0 && \
+		ft_strcmp(e->param->name, "burningship") != 0 && \
+		ft_strcmp(e->param->name, "tricorn") != 0)
 	{
 		if (e->f->motion == 1)
 			mlx_string_put(e->mlx, e->win, 815, 300, G, "Motion  :    ON");
@@ -76,8 +81,9 @@ void	commands(t_env *e)
 	}
 	mlx_string_put(e->mlx, e->win, 815, 320, B, "Iter    :");
 	color = (e->param->iter < 2) ? R : G;
-	mlx_string_put(e->mlx, e->win, 950, 320, color, ft_itoa(e->param->iter));
+	mlx_string_put(e->mlx, e->win, 945, 320, color, ft_itoa(e->param->iter));
 	color = (e->param->zoom < 20) ? R : G;
-	mlx_string_put(e->mlx, e->win, 815, 340, B, "Zoom    :   x");
-	mlx_string_put(e->mlx, e->win, 950, 340, color, ft_itoa(e->param->zoom / 10));
+	mlx_string_put(e->mlx, e->win, 815, 340, B, "Zoom    : x");
+	mlx_string_put(e->mlx, e->win, 925, 340, color, \
+			ft_itoa(e->param->zoom / 100));
 }

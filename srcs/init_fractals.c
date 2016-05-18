@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 14:37:20 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/18 14:31:13 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/18 16:28:36 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,10 @@ t_frac		*init_specials(t_frac *f, char *name)
 		f->c_r = -0.74;
 		f->c_i = 0.14;
 	}
-
 	return (f);
 }
 
-void			init_fractals(char *av, t_env *env)
+void		init_fractals(char *av, t_env *env)
 {
 	if (ft_strcmp(av, "mandelbrot") == 0)
 		mandelbrot(env);
@@ -67,4 +66,5 @@ void			init_fractals(char *av, t_env *env)
 		chameleon(env);
 	if (ft_strcmp(av, "sword") == 0)
 		sword(env);
+	mlx_put_image_to_window(env->mlx, env->win, env->img->img, 0, 0);
 }

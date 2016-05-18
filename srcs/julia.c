@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 14:48:38 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/18 14:09:27 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/18 16:29:28 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void		julia(t_env *e)
 		}
 		e->f->x++;
 	}
-	mlx_put_image_to_window(e->mlx, e->win, e->img->img, 0, 0);
 }
 
 void		chameleon(t_env *e)
@@ -63,7 +62,6 @@ void		chameleon(t_env *e)
 		}
 		e->f->x++;
 	}
-	mlx_put_image_to_window(e->mlx, e->win, e->img->img, 0, 0);
 }
 
 void		sword(t_env *e)
@@ -81,7 +79,8 @@ void		sword(t_env *e)
 					e->f->i < e->param->iter)
 			{
 				e->f->tmp = e->f->z_r;
-				e->f->z_r = fabsl(pow(e->f->z_r, 2) - pow(e->f->z_i, 2) + e->f->c_r);
+				e->f->z_r = fabsl(pow(e->f->z_r, 2) - pow(e->f->z_i, 2) \
+						+ e->f->c_r);
 				e->f->z_i = fabsl(-2 * e->f->z_i * e->f->tmp + e->f->c_i);
 				e->f->i++;
 			}
@@ -90,5 +89,4 @@ void		sword(t_env *e)
 		}
 		e->f->x++;
 	}
-	mlx_put_image_to_window(e->mlx, e->win, e->img->img, 0, 0);
 }

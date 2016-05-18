@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:48:59 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/18 11:09:36 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/18 16:35:57 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@
 # define G 0x00ff00
 # define B 0x98f5ff
 # define W 0xffffff
+# define M 0xff7f7f
 
 #endif
