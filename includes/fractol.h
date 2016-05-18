@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:30:57 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/17 17:25:52 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/18 15:32:00 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_env		*init_env(char *name);
 t_img		*init_img(t_env *env);
 t_param		*init_param(char *name);
 t_frac		*init_frac(char *name);
+t_frac		*init_specials(t_frac *f, char *name);
+int			param_checker(char *param);
 
 /*
 ** GRAPHICAL FUNCTIONS
@@ -37,7 +39,11 @@ void		mlx_put_pixel_to_image(t_env *env, int x, int y, int color);
 void		put_pixel_to_fractal(t_env *env, int color);
 void		mandelbrot(t_env *env);
 void		julia(t_env *env);
-int			init_fractals(char *av, t_env *env);
+void		burningship(t_env *env);
+void		tricorn(t_env *env);
+void		chameleon(t_env *env);
+void		sword(t_env *env);
+void		init_fractals(char *av, t_env *env);
 
 /*
 ** HOOKS

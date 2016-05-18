@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 12:36:15 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/17 16:53:11 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/18 14:26:02 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ int		motion(int x, int y, t_env *env)
 			if (x > X_WIN / 2 && y < Y_WIN)
 				env->f->c_r -= 0.01;
 			if (x > X_WIN / 2 && y > Y_WIN)
-				env->f->c_r += 0.01;
+				env->f->c_i += 0.01;
 			if (x < X_WIN / 2 && y > Y_WIN)
-				env->f->c_r -= 0.01;
+				env->f->c_i -= 0.01;
 		}
 		mlx_clear_window(env->mlx, env->win);
 		init_fractals(env->param->name, env);

@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:48:59 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/17 15:45:33 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/18 11:09:36 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,7 @@
 # define MENU 38
 # define R 0xff0000
 # define G 0x00ff00
+# define B 0x98f5ff
+# define W 0xffffff
+
 #endif

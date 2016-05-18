@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 16:50:19 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/17 16:52:05 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/18 15:45:14 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		menu(t_env *env)
 			if (x <= 800)
 				mlx_pixel_put(env->mlx, env->win, x, y, 0x98f5ff);
 			else
-				mlx_pixel_put(env->mlx, env->win, x, y, 0x30FF30);
+				mlx_pixel_put(env->mlx, env->win, x, y, 0xaaaaaa);
 			y++;
 		}
 		y = 0;
@@ -51,29 +51,33 @@ void	title(t_env *env)
 	}
 	title[i] = '\0';
 	if (ft_strcmp(title, "JULIA") == 0)
-		mlx_string_put(env->mlx, env->win, 875, 20, 0xffffff, title);
+		mlx_string_put(env->mlx, env->win, 875, 20, W, title);
 	else
-		mlx_string_put(env->mlx, env->win, 850, 20, 0xffffff, title);
-	mlx_string_put(env->mlx, env->win, 810, 250, 0xffffff, "CURENT PARAMETERS");
+		mlx_string_put(env->mlx, env->win, 850, 20, W, title);
+	mlx_string_put(env->mlx, env->win, 810, 250, W, "CURRENT PARAMETERS");
 }
 
 void	commands(t_env *e)
 {
-	mlx_string_put(e->mlx, e->win, 815, 70, 0x98F5FF, "Move    :  Arrows");
-	mlx_string_put(e->mlx, e->win, 815, 90, 0x98F5FF, "Iter +  :    s");
-	mlx_string_put(e->mlx, e->win, 815, 110, 0x98F5FF, "Iter -  :    a");
-	mlx_string_put(e->mlx, e->win, 815, 130, 0x98F5FF, "Reset   :    r");
-	mlx_string_put(e->mlx, e->win, 815, 150, 0x98F5FF, "Zoom    :  Scroll");
-	mlx_string_put(e->mlx, e->win, 815, 170, 0x98F5FF, "Exit    :   Esc");
-	if (ft_strcmp(e->param->name, "mandelbrot") != 0)
+	int		color;
+
+	mlx_string_put(e->mlx, e->win, 815, 70, B, "Move    :  Arrows");
+	mlx_string_put(e->mlx, e->win, 815, 90, B, "Iter +  :    s");
+	mlx_string_put(e->mlx, e->win, 815, 110, B, "Iter -  :    a");
+	mlx_string_put(e->mlx, e->win, 815, 130, B, "Reset   :    r");
+	mlx_string_put(e->mlx, e->win, 815, 150, B, "Zoom    :  Scroll");
+	mlx_string_put(e->mlx, e->win, 815, 170, B, "Exit    :   Esc");
+	if (ft_strcmp(e->param->name, "mandelbrot") != 0 && ft_strcmp(e->param->name, "burningship") != 0 && ft_strcmp(e->param->name, "tricorn") != 0)
 	{
 		if (e->f->motion == 1)
-			mlx_string_put(e->mlx, e->win, 815, 300, G, "Motion  :   ON");
+			mlx_string_put(e->mlx, e->win, 815, 300, G, "Motion  :    ON");
 		else
-			mlx_string_put(e->mlx, e->win, 815, 300, R, "Motion  :   OFF");
+			mlx_string_put(e->mlx, e->win, 815, 300, R, "Motion  :    OFF");
 	}
-	mlx_string_put(e->mlx, e->win, 815, 320, 0x98f5ff, "Iter    :");
-	mlx_string_put(e->mlx, e->win, 950, 320, 0x98f5ff, ft_itoa(e->param->iter));
-	mlx_string_put(e->mlx, e->win, 815, 340, 0x98f5ff, "Zoom    :   x");
-	mlx_string_put(e->mlx, e->win, 950, 340, 0x98f5ff, ft_itoa(e->param->zoom));
+	mlx_string_put(e->mlx, e->win, 815, 320, B, "Iter    :");
+	color = (e->param->iter < 2) ? R : G;
+	mlx_string_put(e->mlx, e->win, 950, 320, color, ft_itoa(e->param->iter));
+	color = (e->param->zoom < 20) ? R : G;
+	mlx_string_put(e->mlx, e->win, 815, 340, B, "Zoom    :   x");
+	mlx_string_put(e->mlx, e->win, 950, 340, color, ft_itoa(e->param->zoom / 10));
 }

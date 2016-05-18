@@ -56,7 +56,7 @@ clean:
 	@make -C libft/ clean
 	@make -C mlx/ clean
 	@rm -f $(OBJS)
-	@echo "\033[37mall FdF_files.o are deleted\033[0m"
+	@echo "\033[37mall $(NAME)_files.o are deleted\033[0m"
 
 fclean:	clean
 	@rm -f $(NAME)
